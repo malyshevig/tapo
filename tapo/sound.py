@@ -27,7 +27,7 @@ class SpeechRecognizer:
         return self
 
     def __next__(self):
-        dt = self.stream.read(4000, exception_on_overflow=True)
+        dt = self.stream.read(4000, exception_on_overflow=False)
         if len(dt) == 0 and self.q.empty():
             raise StopIteration
 
