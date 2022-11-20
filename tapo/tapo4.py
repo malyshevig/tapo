@@ -27,7 +27,7 @@ async def init():
         config = TapoApiClientConfig(ip, email, passwd)
         sw = TapoApiClient.from_config(config)
         await sw.login()
-        asyncio.sleep(0.5)
+        await asyncio.sleep(0.5)
 
 
 async def turn(val:bool):

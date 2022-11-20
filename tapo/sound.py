@@ -1,10 +1,7 @@
 import json, queue
 
 from vosk import Model, KaldiRecognizer
-import os
 import pyaudio
-from tapo4 import turn_on, turn_off, bright,dark, init
-from Levenshtein import distance
 
 
 class SpeechRecognizer:

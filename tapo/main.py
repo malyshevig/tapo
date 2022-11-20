@@ -1,26 +1,25 @@
 import Levenshtein
 
 from sound import SpeechRecognizer
-from tapo4 import turn_on, turn_off, bright,dark, close
+from tapo4 import turn_on, turn_off, bright, dark, close
 from Levenshtein import distance
-from mq import  Publisher
-
+from mq import Publisher
 
 commands = {
     "свет": turn_on,
-     "тьма": turn_off,
-     "спать": turn_off,
-     "больше": bright,
-     "меньше": dark, "темнее": dark,
-     "светлее": bright,
-     "ярче": bright,
-     "включить": turn_on,
-     "выключить": turn_off,
-     "стоп": None
+    "тьма": turn_off,
+    "спать": turn_off,
+    "больше": bright,
+    "меньше": dark, "темнее": dark,
+    "светлее": bright,
+    "ярче": bright,
+    "включить": turn_on,
+    "выключить": turn_off,
+    "стоп": None
 }
 
 
-def find_command(w:str, tolerance:int = 1):
+def find_command(w: str, tolerance: int = 1):
     if w is None:
         return None
 
@@ -40,33 +39,31 @@ def find_command(w:str, tolerance:int = 1):
     return cmd
 
 
-
-
-
-def main ():
+def main():
     sr = SpeechRecognizer()
     it = iter(sr)
 
-    p = Publisher()
+    #    p = Publisher()
 
-    with p:
-       while True:
-            w = next(it)
-            print (f"{w}")
-            p.publish(w)
+    #    with p:
+    while True:
+        w = next(it)
+        print(f"{w}")
+        #           p.publish(w)
 
-            cmd = find_command(w)
-            if cmd is not None:
-                func = commands[cmd]
+        cmd = find_command(w)
+        if cmd is not None:
+            func = commands[cmd]
 
-                if func is not None:
-                    func()
-                    pass
+            if func is not None:
+                func()
+                pass
 
-            if cmd == "стоп":
-                break
+        if cmd == "стоп":
+            break
 
-    close()
+
+    #close()
 
 if __name__ == "__main__":
     main()
