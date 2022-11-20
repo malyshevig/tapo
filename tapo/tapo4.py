@@ -55,7 +55,6 @@ async def __close__():
     await sw.client.http.session.close()
 
 
-
 async def state():
     state: TapoDeviceState = await sw.get_state()
     return state

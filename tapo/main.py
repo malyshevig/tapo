@@ -1,9 +1,8 @@
 import Levenshtein
 
-from sound import SpeechRecognizer
-from tapo4 import turn_on, turn_off, bright, dark, close
-from Levenshtein import distance
-from mq import Publisher
+
+from .tapo4 import turn_on, turn_off, bright, dark, close
+from .sound import SpeechRecognizer
 
 commands = {
     "свет": turn_on,
@@ -63,7 +62,7 @@ def main():
             break
 
 
-    #close()
+    close()
 
 if __name__ == "__main__":
     main()
