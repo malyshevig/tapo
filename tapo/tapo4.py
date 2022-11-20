@@ -5,7 +5,7 @@ from plugp100 import TapoApiClient, TapoApiClientConfig, LightEffect, TapoDevice
 
 #ip:str= "192.168.100.7"
 #ip:str= "192.168.100.5"
-ip:str= "192.168.100.11"
+ip:str= "192.168.100.3"
 
 email = "ilia.malishev@gmail.com"
 passwd = "Tarakan24"
@@ -56,13 +56,13 @@ async def __close__():
 
 
 
+async def state():
+    state: TapoDeviceState = await sw.get_state()
+    return state
+
+
 async def brightness(val:bool):
     # create generic tapo api
-
-
-
-
-
 
     state: TapoDeviceState = await sw.get_state()
     print(f"brighthness = {state.brightness}")
@@ -73,8 +73,6 @@ async def brightness(val:bool):
         else:
             await sw.set_brightness(max(5, state.brightness - 25))
             asyncio.sleep(0.1)
-
-
 
 
 #    await sw.set_brightness(100)
@@ -123,4 +121,16 @@ def close ():
     loop = asyncio.get_event_loop()
     loop.run_until_complete(__close__())
 
+def get_state():
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(init())
+    st= loop.run_until_complete(state())
+    return st
+
+
 #turn_off()
+
+if __name__ == "__main__":
+    state= get_state()
+    print (state)
+    close()

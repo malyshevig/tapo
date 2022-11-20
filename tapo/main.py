@@ -55,8 +55,6 @@ def main ():
             print (f"{w}")
             p.publish(w)
 
-
-
             cmd = find_command(w)
             if cmd is not None:
                 func = commands[cmd]
