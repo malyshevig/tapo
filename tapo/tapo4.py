@@ -5,7 +5,8 @@ from plugp100 import TapoApiClient, TapoApiClientConfig, LightEffect, TapoDevice
 
 #ip:str= "192.168.100.7"
 #ip:str= "192.168.100.5"
-ip:str= "192.168.100.3"
+#ip:str= "192.168.100.3"
+ip:str= "192.168.100.2"
 
 email = "ilia.malishev@gmail.com"
 passwd = "Tarakan24"
