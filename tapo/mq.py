@@ -13,7 +13,7 @@ passwd = "words"
 multiprocessing.set_start_method("fork")
 
 credentials = pika.PlainCredentials(user, passwd)
-parameters = pika.ConnectionParameters(host=host, port='5672', credentials=credentials)
+wordsparameters = pika.ConnectionParameters(host=host, port='5672', credentials=credentials)
 
 
 def on_message_callback(channel, method, properties, body):
@@ -89,3 +89,12 @@ class Publisher:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.close()
+
+
+def test():
+    connection = pika.BlockingConnection(parameters)
+    channel = connection.channel()
+
+
+if __name__ == "__main__":
+    test()
